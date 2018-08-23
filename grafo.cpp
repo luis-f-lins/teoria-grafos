@@ -5,25 +5,17 @@
 * Felipe Ferreira e Luis Fernando
 */
 
-#include <algorithm>
 #include "grafo.h"
 
-Vertex::Vertex (unsigned index, unsigned &neighbours, unsigned numOfNeighbours){
-  mIndex = index;
-  mNumOfNeighbours = numOfNeighbours;
-  &mNeighbours = neighbours;
-}
-
-unsigned Vertex::getIndex (){
-  return mIndex;
-}
-void Vertex::getNeighbours (unsigned &neighbours, unsigned numOfNeighbours){
-  neighbours = &mNeighbours;
-  numOfNeighbours = mNumOfNeighbours;
-}
-unsigned Vertex::getDegree (){
-  return mNumOfNeighbours;
-}
-void Vertex::sortNeighbours (){
-  sort(&mNeighbours, &mNeighbours+(mNumOfNeighbours-1));
+ostream & operator<<(std::ostream & output, const Graph &graph){
+  vector <unsigned> neighbours;
+  for (unsigned i=0; i < graph.size(); ++i){
+    output << graph.at(i).getIndex() << "-->";
+    graph.at(i).getNeighbours(neighbours);
+    for (unsigned j=0; j < neighbours.size(); ++j){
+      output << neighbours.at(j) << ", ";
+    }
+    output << endl;
+  }
+  return output;
 }
