@@ -5,8 +5,8 @@
 * Felipe Ferreira e Luis Fernando
 */
 
-#include <stdio>
-#include <stdlib>
+//#include <cstdio>
+//#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -17,6 +17,7 @@ using namespace std;
 int main (int argc, char *argv[]){
 
   string line;
+  unsigned vertex1, vertex2;
 
   if (argc != 2){
     cout << "Please, provide a text file with the graph description" << endl;
@@ -27,13 +28,30 @@ int main (int argc, char *argv[]){
 
   getline(file, line);
 
-  Graph graph = new Graph(strtoul(line, NULL, 10));
+  Graph graph(stoul(line));
 
+  getline(file, line);
+  cout << "Graph size: " << graph.getNumberOfVertices() << endl;
   while (file.good()) {
     //cout << line << endl;
-    
+    vertex1 = line[0] - '0';
+    vertex2 = line[2] - '0';
+    //cout << "Vertex 1: " << vertex1 << endl;
+    //cout << "Vertex 2: " << vertex2 << endl;
+    graph.getVertex(vertex1)->setNeighbour(vertex2);
+    graph.getVertex(vertex2)->setNeighbour(vertex1);
+
     getline(file, line);
   }
+  cout << graph;
 
   file.close();
+
+  cout << "Numero de Vertices: " << graph.getNumberOfVertices() << endl;
+  cout << "Numero de Arestas: " << graph.getNumberOfEdges() << endl;
+  cout << "grau minimo: " << graph.getMinDegree() << endl;
+  cout << "grau maximo: " << graph.getMaxDegree() << endl;
+  cout << "grau medio: " << graph.getAvgDegree() << endl;
+  cout << "grau mediano: " << graph.getMedianDegree() << endl;
+
 }

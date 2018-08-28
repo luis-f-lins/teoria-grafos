@@ -11,21 +11,24 @@
 #include <ostream>
 #include "vertice.h"
 
-class Graph: public vector <Vertex>{
+class Graph {
 
-  friend ostream & operator<<(std::ostream &, const Graph &);
+  friend ostream & operator<<(std::ostream &, Graph &);
 
   public:
-    Graph(Vertex);
+    Graph(unsigned);
 
+    Vertex* getVertex (unsigned);
     unsigned getNumberOfEdges ();
-    unsigned getNumberOfVertices ();
+    unsigned getNumberOfVertices () const;
     unsigned getMinDegree ();
     unsigned getMaxDegree ();
     unsigned getAvgDegree ();
     unsigned getMedianDegree ();
 
   private:
+    unsigned mNumberOfVertices;
+    vector <Vertex> mVertices;
 };
 
 #endif

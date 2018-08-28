@@ -14,18 +14,16 @@ using namespace std;
 
 class Vertex {
   public:
-    Vertex (unsigned);
-
+    Vertex ();
+    //~Vertex();
     void setNeighbour (unsigned);
 
-    unsigned getIndex() const;
-    void getNeighbours (vector <unsigned> &) const;
+    vector <unsigned>* getNeighbours();
     unsigned getDegree() const;
 
     void sortNeighbours ();
 
   private:
-    unsigned mIndex;
     vector <unsigned> mNeighbours;
 };
 

@@ -6,19 +6,19 @@
 */
 
 #include <algorithm>
+#include <iostream>
 #include "grafo.h"
 
-Vertex::Vertex (unsigned index){
-  mIndex = index;
+Vertex::Vertex (){
 }
+//Vertex::~Vertex(){
+//  cout << "I WAS DESTROYED" << endl;
+//}
 void Vertex::setNeighbour (unsigned neighbour){
   mNeighbours.push_back(neighbour);
 }
-unsigned Vertex::getIndex () const{
-  return mIndex;
-}
-void Vertex::getNeighbours (vector <unsigned> &neighbours) const{
-  neighbours = mNeighbours;
+vector <unsigned>* Vertex::getNeighbours (){
+  return &mNeighbours;
 }
 unsigned Vertex::getDegree () const{
   return mNeighbours.size();
