@@ -34,8 +34,8 @@ int main (int argc, char *argv[]){
   cout << "Graph size: " << graph.getNumberOfVertices() << endl;
   while (file.good()) {
     //cout << line << endl;
-    vertex1 = line[0] - '0';
-    vertex2 = line[2] - '0';
+  string vertex1, vertex2;
+  file>> vertex1>> vertex2;
     //cout << "Vertex 1: " << vertex1 << endl;
     //cout << "Vertex 2: " << vertex2 << endl;
     graph.getVertex(vertex1)->setNeighbour(vertex2);
